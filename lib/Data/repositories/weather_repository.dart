@@ -1,9 +1,7 @@
 import 'package:weather_forecast/Core/adapters/weathermodel_to_weather_adapter.dart';
-import 'package:weather_forecast/Core/helpers.dart';
 import 'package:weather_forecast/Data/data_sources/weather_data_source.dart';
 import 'package:weather_forecast/Domain/entities/location.dart';
 import 'package:weather_forecast/Domain/entities/weather.dart';
-import 'package:weather_forecast/Domain/entities/weather_condition.dart';
 import 'package:weather_forecast/Domain/repositories/base_weather_repository.dart';
 
 import '../models/weather_model.dart';

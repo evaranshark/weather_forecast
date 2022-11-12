@@ -1,11 +1,7 @@
-import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:weather_forecast/Core/helpers.dart';
 import 'package:weather_forecast/Core/usecase.dart';
-import 'package:weather_forecast/Domain/entities/forecast_aggregator.dart';
 import 'package:weather_forecast/Domain/repositories/base_weather_repository.dart';
 
 import '../entities/weather.dart';

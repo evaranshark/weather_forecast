@@ -13,8 +13,7 @@ class OWMGeocodingDataSource implements GeocodingDataSource {
         .get(uriString)
         .then((value) => LocationModel.fromJsonList(value.data))
         .onError((error, stackTrace) {
-      print(error!);
-      throw HttpException("Error fetching data on uri.", uri: _getUri(name));
+      throw HttpException("Fetching data on uri failed.", uri: _getUri(name));
     });
   }
 

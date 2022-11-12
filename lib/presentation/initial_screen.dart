@@ -9,6 +9,8 @@ import '../state_management/bloc/app_bloc.dart';
 import '../state_management/event/details_event.dart';
 
 class InitialScreen extends StatefulWidget {
+  const InitialScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => InitialScreenWidgetState();
 }
@@ -46,9 +48,9 @@ class InitialScreenWidgetState extends State<InitialScreen> {
                         _isSubmitEnabled = false;
                       });
                     },
-                    icon: Icon(Icons.clear_outlined),
+                    icon: const Icon(Icons.clear_outlined),
                   ),
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                 ),
               ),
               const SizedBox(

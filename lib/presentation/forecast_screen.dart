@@ -8,6 +8,8 @@ import 'package:weather_forecast/state_management/state/forecast_state.dart';
 import '../Domain/entities/weather.dart';
 
 class ForecastScreen extends StatelessWidget {
+  const ForecastScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,9 +60,7 @@ class ForecastScreen extends StatelessWidget {
   }
 
   Widget _buildErrorScreen() {
-    return Container(
-      child: Text("Error fetching data."),
-    );
+    return const Text("Error fetching data.");
   }
 
   Widget _buildLoadingScreen() {
@@ -114,7 +114,7 @@ class ForecastScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     SizedBox(
                       width: 80,
                       child: Card(
@@ -151,7 +151,7 @@ class ForecastScreen extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Max"),
+                              const Text("Max"),
                               Text(TemperatureHelper.getTemperature(
                                   weather.maxTemp!)),
                             ],

@@ -12,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key, required this.configuration});
+  const MyApp({super.key, required this.configuration});
   final BaseConfiguration configuration;
 
   // This widget is the root of your application.
@@ -27,10 +27,11 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
           //useMaterial3: true,
         ),
-        home: InitialScreen(),
+        home: const InitialScreen(),
         routes: {
-          AppConstants.WEATHER_DETAILS_ROUTE: (context) => WeatherScreen(),
-          AppConstants.WEATHER_GRAPH_ROUTE: (context) => ForecastScreen(),
+          AppConstants.WEATHER_DETAILS_ROUTE: (context) =>
+              const WeatherScreen(),
+          AppConstants.WEATHER_GRAPH_ROUTE: (context) => const ForecastScreen(),
         },
       ),
     );

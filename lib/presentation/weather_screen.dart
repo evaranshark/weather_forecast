@@ -12,6 +12,8 @@ import '../state_management/bloc/app_bloc.dart';
 import '../state_management/bloc/forecast_bloc.dart';
 
 class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => WeatherScreenState();
 }
@@ -91,9 +93,7 @@ class WeatherScreenState extends State<WeatherScreen> {
   }
 
   Widget _buildErrorScreen() {
-    return Container(
-      child: Text("Error fetching data."),
-    );
+    return const Text("Error fetching data.");
   }
 
   Widget _buildLoadedScreen(DetailsLoadedState state) {
@@ -123,7 +123,7 @@ class WeatherScreenState extends State<WeatherScreen> {
             ],
           ),
         ),
-        Spacer(
+        const Spacer(
           flex: 3,
         ),
       ],
