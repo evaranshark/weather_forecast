@@ -56,6 +56,7 @@ class InitialScreenWidgetState extends State<InitialScreen> {
               const SizedBox(
                 height: 8.0,
               ),
+              //TODO Move onPressed in function
               ElevatedButton(
                 onPressed: _isSubmitEnabled
                     ? () {

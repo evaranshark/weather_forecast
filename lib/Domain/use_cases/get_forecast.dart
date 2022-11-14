@@ -7,6 +7,7 @@ import 'package:weather_forecast/Domain/repositories/base_weather_repository.dar
 import '../entities/weather.dart';
 import '../repositories/base_geocoding_repository.dart';
 
+//Usecase gets data from related repositories and prepares data to be presented.
 class GetForecast extends UseCase<List<Weather>, GetForecastParams> {
   final BaseWeatherRepository repository;
   final BaseGeocodingRepository geocodingRepository;

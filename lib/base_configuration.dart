@@ -5,11 +5,12 @@ import 'package:weather_forecast/Domain/use_cases/get_forecast.dart';
 import 'package:weather_forecast/state_management/bloc/app_bloc.dart';
 import 'package:weather_forecast/state_management/bloc/details_screen_bloc.dart';
 import 'package:weather_forecast/state_management/bloc/forecast_bloc.dart';
-import 'package:weather_forecast/state_management/bloc/initial_screen_bloc.dart';
 import 'Data/data_sources/owm_data_source.dart';
 import 'Data/repositories/weather_repository.dart';
 import 'Domain/use_cases/get_weather_by_city.dart';
 
+//Class contains current app configuration.
+//Instantiates usecases and Bloc providers
 class BaseConfiguration {
   late final GetWeatherByCity getWeatherCase;
   late final GetForecast getForecastCase;
@@ -29,9 +30,6 @@ class BaseConfiguration {
     );
 
     providers = [
-      BlocProvider<InitialScreenBloc>(
-        create: (context) => InitialScreenBloc(),
-      ),
       BlocProvider<DetailsBloc>(
         create: (context) => DetailsBloc(useCase: getWeatherCase),
       ),

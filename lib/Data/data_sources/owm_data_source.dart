@@ -1,25 +1,28 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:weather_forecast/Data/data_sources/weather_data_source.dart';
+import 'package:weather_forecast/Domain/data_sources/weather_data_source.dart';
 import 'package:weather_forecast/Data/models/weather_model.dart';
 import 'package:weather_forecast/app_constants.dart';
 
+//Data source to communitate with OpenWeather API.
 class OWMDataSource implements WeatherDataSource {
+  //Deprecated API method so not used.
   @override
-  Future<WeatherModel> getWeatherByCityName(String location) async {
+  Future<WeatherModel> getWeatherByCityName(String cityName) async {
     return await Dio()
-        .get(_UriProvider.weatherByCity(location: location).uri.toString())
+        .get(_UriProvider.weatherByCity(cityName: cityName).uri.toString())
         .then((value) => WeatherModel.fromJson(value.data))
         .onError((error, stackTrace) =>
-            throw HttpException("Error fetching weather data for $location"));
+            throw HttpException("Error fetching weather data for $cityName"));
   }
 
+  //Deprecated API method so not used.
   @override
-  Future<List<WeatherModel>> getForecastByCityName(String location) async {
+  Future<List<WeatherModel>> getForecastByCityName(String cityName) async {
     return await Dio()
         .get(
-            'https://api.openweathermap.org/data/2.5/forecast?q=$location&appid=${AppConstants.API_KEY}&units=metric&cnt=24')
+            'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&appid=${AppConstants.API_KEY}&units=metric&cnt=24')
         .then((value) => WeatherModel.arrayFromJson(value.data))
         .onError((error, stackTrace) => throw error!);
   }
@@ -50,12 +53,12 @@ class _UriProvider {
 
   _UriProvider._({required this.domain, required this.path, this.query});
 
-  factory _UriProvider.weatherByCity({required String location}) =>
+  factory _UriProvider.weatherByCity({required String cityName}) =>
       _UriProvider._(
           domain: "api.openweathermap.org",
           path: "/data/2.5/weather",
           query: {
-            'q': location,
+            'q': cityName,
             'units': 'metric',
             'appid': AppConstants.API_KEY
           });
@@ -70,6 +73,15 @@ class _UriProvider {
             'lon': lon.toStringAsFixed(2),
             'units': 'metric',
             'appid': AppConstants.API_KEY
+          });
+
+  factory _UriProvider.forecastByCity({required String name}) => _UriProvider._(
+          domain: "api.openweathermap.org",
+          path: "/data/2.5/forecast",
+          query: {
+            'q': name,
+            'units': 'metric',
+            'appid': AppConstants.API_KEY,
           });
 
   factory _UriProvider.forecastByCoords(

@@ -1,11 +1,13 @@
 import 'package:weather_forecast/Core/adapters/weathermodel_to_weather_adapter.dart';
-import 'package:weather_forecast/Data/data_sources/weather_data_source.dart';
+import 'package:weather_forecast/Domain/data_sources/weather_data_source.dart';
 import 'package:weather_forecast/Domain/entities/location.dart';
 import 'package:weather_forecast/Domain/entities/weather.dart';
 import 'package:weather_forecast/Domain/repositories/base_weather_repository.dart';
 
+import '../../Core/adapter.dart';
 import '../models/weather_model.dart';
 
+//Repository for Weather data source. Fetches data from source and adapts it to buisness entities.
 class WeatherRepository implements BaseWeatherRepository {
   final WeatherDataSource dataSource;
   const WeatherRepository({required this.dataSource});

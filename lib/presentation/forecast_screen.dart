@@ -80,6 +80,7 @@ class ForecastScreen extends StatelessWidget {
         }));
   }
 
+  //TODO create separate widget
   Widget _buildTile(Weather weather, {String? title}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),

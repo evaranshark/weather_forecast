@@ -1,6 +1,7 @@
 import '../../Data/models/weather_model.dart';
 import '../../Domain/entities/weather.dart';
 import '../../Domain/entities/weather_condition.dart';
+import '../adapter.dart';
 
 class WeatherModelToWeatherAdapter implements Adapter<WeatherModel, Weather> {
   @override
@@ -19,8 +20,4 @@ class WeatherModelToWeatherAdapter implements Adapter<WeatherModel, Weather> {
         wind: value.wind.round(),
         windDegree: value.windDegree,
       );
-}
-
-abstract class Adapter<From, To> {
-  To cast(From value);
 }

@@ -1,11 +1,12 @@
 import 'package:weather_forecast/Core/adapters/locationmodel_to_location_adapter.dart';
-import 'package:weather_forecast/Data/data_sources/geocoding_data_source.dart';
+import 'package:weather_forecast/Domain/data_sources/geocoding_data_source.dart';
 import 'package:weather_forecast/Data/models/location_model.dart';
 import 'package:weather_forecast/Domain/entities/location.dart';
 import 'package:weather_forecast/Domain/repositories/base_geocoding_repository.dart';
 
-import '../../Core/adapters/weathermodel_to_weather_adapter.dart';
+import '../../Core/adapter.dart';
 
+//Repository for Geocoding data source. Fetches data from source and adapts it to buisness entities.
 class GeocodingRepository implements BaseGeocodingRepository {
   final GeocodingDataSource dataSource;
   const GeocodingRepository({required this.dataSource});

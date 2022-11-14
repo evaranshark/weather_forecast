@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:weather_forecast/Data/data_sources/geocoding_data_source.dart';
+import 'package:weather_forecast/Domain/data_sources/geocoding_data_source.dart';
 import 'package:weather_forecast/Data/models/location_model.dart';
 import 'package:weather_forecast/app_constants.dart';
 
+//Data source to communitate with OpenWeather Geocoding API.
 class OWMGeocodingDataSource implements GeocodingDataSource {
+  //Fetch coordinates of the city by it's name.
+  //Restricted to get only one location in response.
   @override
   Future<List<LocationModel>> getLocations(String name) async {
     var uriString = _getUri(name).toString();

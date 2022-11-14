@@ -1,3 +1,4 @@
+//Not used currently.
 import 'package:weather_forecast/state_management/event/initial_screen_event.dart';
 import 'package:weather_forecast/state_management/state/initial_state.dart';
 import 'package:bloc/bloc.dart';
