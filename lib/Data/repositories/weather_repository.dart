@@ -4,6 +4,7 @@ import 'package:weather_forecast/Domain/entities/location.dart';
 import 'package:weather_forecast/Domain/entities/weather.dart';
 import 'package:weather_forecast/Domain/repositories/base_weather_repository.dart';
 
+import '../../Core/adapter.dart';
 import '../models/weather_model.dart';
 
 class WeatherRepository implements BaseWeatherRepository {

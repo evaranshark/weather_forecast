@@ -4,7 +4,7 @@ import 'package:weather_forecast/Data/models/location_model.dart';
 import 'package:weather_forecast/Domain/entities/location.dart';
 import 'package:weather_forecast/Domain/repositories/base_geocoding_repository.dart';
 
-import '../../Core/adapters/weathermodel_to_weather_adapter.dart';
+import '../../Core/adapter.dart';
 
 class GeocodingRepository implements BaseGeocodingRepository {
   final GeocodingDataSource dataSource;

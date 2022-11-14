@@ -72,6 +72,15 @@ class _UriProvider {
             'appid': AppConstants.API_KEY
           });
 
+  factory _UriProvider.forecastByName({required String name}) => _UriProvider._(
+          domain: "api.openweathermap.org",
+          path: "/data/2.5/forecast",
+          query: {
+            'q': name,
+            'units': 'metric',
+            'appid': AppConstants.API_KEY,
+          });
+
   factory _UriProvider.forecastByCoords(
           {required double lat, required double lon}) =>
       _UriProvider._(
