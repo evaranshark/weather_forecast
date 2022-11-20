@@ -7,6 +7,13 @@ import 'package:weather_forecast/Domain/repositories/base_weather_repository.dar
 import '../entities/weather.dart';
 import '../repositories/base_geocoding_repository.dart';
 
+//Usecase gets data from related repositories and prepares data to be presented.
+//Due to unclear specification of forecast screen data there are some assumptions:
+//1. Show forecast data for next 3 days form current date (excluding current date);
+//1.1 Additionally show the coldest day from this 3.
+//2. Show daily data as average till day (one entry for the date);
+//2.1 Min and max temperature should be min and max per date;
+//3. Condition shown as first for the date (probably at midnight, needs fix);
 class GetForecast extends UseCase<List<Weather>, GetForecastParams> {
   final BaseWeatherRepository repository;
   final BaseGeocodingRepository geocodingRepository;
@@ -16,6 +23,7 @@ class GetForecast extends UseCase<List<Weather>, GetForecastParams> {
     required this.geocodingRepository,
   });
 
+  //Fetches coordinates of city using Geocoding API, then uses it to fetch forecast data.
   @override
   Future<List<Weather>> execute(GetForecastParams params) async {
     var location = await geocodingRepository
@@ -30,9 +38,12 @@ class GetForecast extends UseCase<List<Weather>, GetForecastParams> {
           .toList();
       List<List<Weather>> sublists = [];
       List<Weather> result = [];
+
+      //Split forecast results list to sublists based on entry's date
       for (DateTime date in value.map((e) => e.date).toSet()) {
         sublists.add(value.where((element) => element.date == date).toList());
       }
+      //Shrink sublists to one-entry-per-date
       for (List<Weather> list in sublists) {
         result.add(Weather(
             condition: list[0].condition,
@@ -48,8 +59,10 @@ class GetForecast extends UseCase<List<Weather>, GetForecastParams> {
             windDegree:
                 list.map((e) => e.windDegree.toDouble()).average.round()));
       }
+      //Remove entries with current date
       result.removeWhere(
           (element) => element.date == DateUtils.dateOnly(DateTime.now()));
+      //API returns forecast for 5 days so we get 3 of them
       result = result.sublist(0, 3);
       result.insert(
           0,

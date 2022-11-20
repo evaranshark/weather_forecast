@@ -1,4 +1,4 @@
-import '../models/weather_model.dart';
+import '../../Data/models/weather_model.dart';
 
 abstract class WeatherDataSource {
   Future<WeatherModel> getWeatherByCityName(String location);

@@ -40,6 +40,7 @@ class InitialScreenWidgetState extends State<InitialScreen> {
                 onChanged: (value) => setState(() {
                   _isSubmitEnabled = value.isNotEmpty;
                 }),
+                onSubmitted: (value) => _onSubmitPressed(context),
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -56,18 +57,10 @@ class InitialScreenWidgetState extends State<InitialScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              //TODO Move onPressed in function
               ElevatedButton(
                 onPressed: _isSubmitEnabled
                     ? () {
-                        context.read<AppBloc>().add(AppEventUpdateLocation(
-                                location: Location(
-                              name: _cityTextController.text,
-                            )));
-                        Navigator.pushNamed(
-                            context, AppConstants.WEATHER_DETAILS_ROUTE);
-                        context.read<DetailsBloc>().add(DetailsLoadEvent(
-                            location: _cityTextController.text));
+                        _onSubmitPressed(context);
                       }
                     : null,
                 child: const Text(
@@ -79,5 +72,16 @@ class InitialScreenWidgetState extends State<InitialScreen> {
         ),
       ),
     );
+  }
+
+  _onSubmitPressed(BuildContext context) {
+    context.read<AppBloc>().add(AppEventUpdateLocation(
+            location: Location(
+          name: _cityTextController.text,
+        )));
+    Navigator.pushNamed(context, AppConstants.WEATHER_DETAILS_ROUTE);
+    context
+        .read<DetailsBloc>()
+        .add(DetailsLoadEvent(location: _cityTextController.text));
   }
 }
