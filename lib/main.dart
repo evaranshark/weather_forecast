@@ -7,7 +7,7 @@ import 'package:weather_forecast/presentation/initial_screen.dart';
 import 'package:weather_forecast/presentation/forecast_screen.dart';
 
 void main() {
-  BaseConfiguration configuration = BaseConfiguration.getConfiguration();
+  var configuration = BaseConfiguration.getConfiguration();
   runApp(MyApp(configuration: configuration));
 }
 

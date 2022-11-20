@@ -41,5 +41,5 @@ class BaseConfiguration {
     ];
   }
 
-  factory BaseConfiguration.getConfiguration() => BaseConfiguration._();
+  BaseConfiguration.getConfiguration() : this._();
 }

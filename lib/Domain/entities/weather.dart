@@ -1,11 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:weather_forecast/Domain/entities/weather_condition.dart';
 
-// API:
-// weatherState, time, min, max, current,
 class Weather extends Equatable {
+  /// Represents weather condition.
   final WeatherCondition condition;
+
+  /// Date which this forecast relates to.
   final DateTime date;
+
+  /// Name of the city this forecast relates to.
   final String location;
   final int temperature;
   final int? minTemp;
